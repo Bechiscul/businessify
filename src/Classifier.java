@@ -1,14 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 
-// classify adjectives and nouns
-
+// classify adjectives, nouns and verbs
 public class Classifier {
-    static HashSet<String> nouns = new HashSet<>();
-    static HashSet<String> adjectives = new HashSet<>();
-    static HashSet<String> verbs = new HashSet<>();
-
-
     public static void classify(String text)  {
         
     }
