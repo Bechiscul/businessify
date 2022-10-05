@@ -1,19 +1,12 @@
-import javax.swing.JLabel;
-
-import ui.TextReader;
 import ui.Window;
+import ui.pages.Fileimport;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        JLabel test = new JLabel("test");
-        JLabel test2 = new JLabel("test");
-
         Window mainApp = new Window();
+        Fileimport importUi = new Fileimport();
 
-        mainApp.makeTab("test", test);   
-        mainApp.makeTab("test2", test2);
+        mainApp.makeTab("Import file", importUi);
 
-        TextReader text = new TextReader();
-        text.openFolder();
     }
 }

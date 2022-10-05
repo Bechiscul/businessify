@@ -38,8 +38,8 @@ public class TextReader {
     public void readFile() {
         try { 
             Scanner file = new Scanner(selectedFile);
-            //BufferedReader input = new BufferedReader(file);
-           while (file.hasNextLine()) {
+
+            while (file.hasNextLine()) {
             String data = file.nextLine();
             System.out.println(data);
           }
