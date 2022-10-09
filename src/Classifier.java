@@ -1,8 +1,20 @@
+import java.io.*;
 import java.util.ArrayList;
-import java.util.HashSet;
+
+import edu.mit.jwi.*;
 
 // classify adjectives, nouns and verbs
 public class Classifier {
+    private IDictionary dictionary;
+
+
+    public Classifier() throws IOException {
+        File file = new File("./assets/dict");
+        this.dictionary = new Dictionary(file);
+        this.dictionary.open();
+    }
+
+
     public static void classify(String text)  {
         
     }
