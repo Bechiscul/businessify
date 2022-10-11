@@ -38,4 +38,16 @@ public class util {
         panel.add(filler);
         return panel;
     }
+
+    public static void refresh(JFrame comp) {
+        /*
+         * Refresh component with new variables
+         * 1. Removes all elements from component
+         * 2. repaint all elements
+         * 3. Call method
+         */
+        comp.invalidate();
+        comp.validate();
+        comp.repaint();
+    }
 }

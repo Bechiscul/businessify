@@ -4,10 +4,12 @@ import java.io.*;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TextReader {
     public File selectedFile;
+    public String data;
 
     public void openFolder() {
         String filename = File.separator + "tmp";
@@ -27,6 +29,9 @@ public class TextReader {
                 System.out.println("Closed dialog window. One file selected");
                 selectedFile = fc.getSelectedFile();
                 readFile();
+
+                SwingUtilities.updateComponentTreeUI(Window.frame);
+                util.refresh(Window.frame);
                 break;
 
             default:
@@ -65,7 +70,7 @@ public class TextReader {
             Scanner file = new Scanner(selectedFile);
 
             while (file.hasNextLine()) {
-                String data = file.nextLine();
+                data = file.nextLine();
                 System.out.println(data);
             }
             file.close();
