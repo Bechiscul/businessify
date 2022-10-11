@@ -7,7 +7,7 @@ import ui.TextReader;
 import ui.util;
 
 public class Fileimport extends JPanel {
-    TextReader textImport = new TextReader();
+    static TextReader textImport = new TextReader();
 
     public Fileimport() {
         super(new GridLayout(3, 1));
@@ -17,9 +17,7 @@ public class Fileimport extends JPanel {
         fileImportContainer.add(DisplayFileExplorer());
 
         this.add(fileImportContainer);
-
-        InnerFileOutput output = new InnerFileOutput();
-        this.add(output);
+        this.add(TextOriginField());
     }
 
     public JButton DisplayFileExplorer() {
@@ -30,19 +28,14 @@ public class Fileimport extends JPanel {
         return browseFiles;
     }
 
-    /**
-     * InnerFileOutput
-     */
-    public class InnerFileOutput extends JPanel {
-        String data;
+    public static JPanel TextOriginField() {
+        JPanel textOrigin = new JPanel();
+        System.out.println("data"+ textImport.data);
+        textOrigin.add(util.makeTextPanel("Original Text", 0, 0, 0));
+        textOrigin.add(util.makeTextPanel(textImport.data, 0, 0, 0));
 
-        public InnerFileOutput() {
-            this.data = textImport.data;
 
-            this.add(util.makeTextPanel("Input", 0, 0, 0));
-            System.out.println("Data:" + data);
-
-        }
-
+        return textOrigin;
     }
+ 
 }

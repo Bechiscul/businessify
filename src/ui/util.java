@@ -39,7 +39,7 @@ public class util {
         return panel;
     }
 
-    public static void refresh(JFrame comp) {
+    public static void refresh(JPanel comp) {
         /*
          * Refresh component with new variables
          * 1. Removes all elements from component

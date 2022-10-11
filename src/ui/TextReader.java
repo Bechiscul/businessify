@@ -7,9 +7,11 @@ import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import ui.pages.Fileimport;
+
 public class TextReader {
     public File selectedFile;
-    public String data;
+    public  String data;
 
     public void openFolder() {
         String filename = File.separator + "tmp";
@@ -29,9 +31,8 @@ public class TextReader {
                 System.out.println("Closed dialog window. One file selected");
                 selectedFile = fc.getSelectedFile();
                 readFile();
-
-                SwingUtilities.updateComponentTreeUI(Window.frame);
-                util.refresh(Window.frame);
+                Fileimport.TextOriginField();
+                
                 break;
 
             default:
