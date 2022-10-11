@@ -24,7 +24,7 @@ public class Classifier {
 
     while(adjectives.hasNext()) {
         ISynset adjective = adjectives.next();
-        System.out.println(adjective);
+        // System.out.println(adjective);
     }
 
     return new LinkedList<>();
