@@ -14,6 +14,8 @@ public class Classifier {
     this.dictionary.open();
   }
 
+
+  /// Returns an array of adjectives
   public ArrayDeque<String> classify(String text) {
     return new ArrayDeque<>();
   }
