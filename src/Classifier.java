@@ -1,7 +1,10 @@
 import edu.mit.jwi.*;
+import edu.mit.jwi.item.*;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.ArrayDeque;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 
 // classify adjectives, nouns and verbs
@@ -16,8 +19,15 @@ public class Classifier {
 
 
   /// Returns an array of adjectives
-  public ArrayDeque<String> classify(String text) {
-    return new ArrayDeque<>();
+  public LinkedList<String> classify(String text) {
+    Iterator<ISynset> adjectives = this.dictionary.getSynsetIterator(POS.ADJECTIVE);
+
+    while(adjectives.hasNext()) {
+        ISynset adjective = adjectives.next();
+        // System.out.println(adjective);
+    }
+
+    return new LinkedList<>();
   }
 
   private static ArrayList<String> getSentences(String text) {
