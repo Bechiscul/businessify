@@ -13,21 +13,26 @@ public class Buzzworder {
         while ((line = reader.readLine()) != null) {
             buzzwords.add(line);
         }
-        
+
         reader.close();
     }
 
     public LinkedList<String> insert(LinkedList<String> adjectives) {
         int count = 0;
         int initialSize = adjectives.size();
-        for (int i = 0; i < initialSize; i++) {
 
-            int random = (int)(Math.random() * 4 + 1);
-            if(i % random == 0) {
+        for (int i = 0; i < initialSize; i++) {
+            int random = (int) (Math.random() * 4 + 1);
+            
+            if (i % random == 0) {
                 String temp = adjectives.get(i);
                 adjectives.remove(i);
                 adjectives.add(i, buzzwords.get(count) + " " + temp);
+                
                 count++;
+                if (count >= buzzwords.size()) {
+                    count = 0;
+                }
             }
         }
 
