@@ -1,12 +1,15 @@
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        Buzzworder buzzer = new Buzzworder();
         Classifier classifier = new Classifier();
-        classifier.classify("hello");
-        Buzzworder buzzworder = new Buzzworder();
+
+        String text = new String("random red text. it is a beautiful product containing cool animations");
+
+        LinkedList<String> buzzedAdjectives = buzzer.insert(classifier.classify(text));
+        System.out.println(buzzedAdjectives);
+        String buzzedText = classifier.reconstruct(buzzedAdjectives);
+        System.out.println(buzzedText);
     }
 }
