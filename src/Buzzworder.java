@@ -20,10 +20,15 @@ public class Buzzworder{
     }
 
     public LinkedList<String> insert (LinkedList<String> adjectives) {
-        int initialSize = adjectives.size();
-        for (int i = 0; i < initialSize; i++) {
-            if(i % 3 == 0){
-            adjectives.add(i, buzzwords.get(i/3));
+        int count = 0;
+        int initialLength = adjectives.size();
+        for (int i = 0; i < initialLength; i++) {
+            int random = (int)(Math.random()*4+1);
+            if(i % random == 0){
+            String temp = adjectives.get(i);
+            adjectives.remove(i);
+            adjectives.add(i, buzzwords.get(count) + " " + temp);
+            count++;
             }
         }
         return adjectives;

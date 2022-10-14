@@ -1,5 +1,6 @@
-buzzwords
-ok
 end-to-end
 groundbreaking
 super-duper-revolutionary
+cutting edge
+mass market
+multi-sided
