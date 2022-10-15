@@ -1,4 +1,4 @@
-package ui;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +28,7 @@ public class util {
         return spinner;
     }
 
-    public static JPanel makeTextPanel(String text, int r, int g, int b) {
+    public static JLabel makeTextPanel(String text, int r, int g, int b) {
         // Make common text panel
         JPanel panel = new JPanel(false);
         JLabel filler = new JLabel(text);
@@ -36,7 +36,7 @@ public class util {
         filler.setForeground(new Color(r, g, b));
         panel.setLayout(new GridLayout(1, 1));
         panel.add(filler);
-        return panel;
+        return filler;
     }
 
     public static void refresh(JPanel comp) {

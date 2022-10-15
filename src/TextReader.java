@@ -1,4 +1,4 @@
-package ui;
+
 
 import java.io.*;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TextReader {
     static File selectedFile;
-
+    
     public static String openFolder() {
         String filename = File.separator + "tmp";
         JFileChooser fc = new JFileChooser(new File(filename));

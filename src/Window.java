@@ -1,10 +1,9 @@
-package ui;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Window extends JPanel {
-
+    
     public static JFrame frame = new JFrame("Businessify"); // main window frame (Global: To only construct one frame
                                                             // and not allocations of multiple frames)
     JTabbedPane tabbedPane = new JTabbedPane(); // Tab menu
@@ -14,7 +13,6 @@ public class Window extends JPanel {
     }
 
     public void makeTab(String title, JComponent comp) {
-
         tabbedPane.addTab(title, comp);
         // The following line enables to use scrolling tabs.
         tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
