@@ -7,6 +7,8 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class TextReader {
+    static File selectedFile;
+
     public static String openFolder() {
         String filename = File.separator + "tmp";
         JFileChooser fc = new JFileChooser(new File(filename));
@@ -23,7 +25,8 @@ public class TextReader {
 
             case JFileChooser.APPROVE_OPTION:
                 System.out.println("Closed dialog window. One file selected");
-                File selectedFile = fc.getSelectedFile();
+                selectedFile = fc.getSelectedFile();
+                
                 String data = readFile(selectedFile);
                 return data;
 
@@ -31,6 +34,10 @@ public class TextReader {
                 System.out.println("Closed dialog window. Error occured");
                 return "Closed dialog window. Error occured";
         }
+    }
+
+    public static String getFilenPath() {
+        return selectedFile.getAbsolutePath();
     }
 
     public static String readFile(File selectedFile) {

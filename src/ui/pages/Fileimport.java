@@ -2,6 +2,10 @@ package ui.pages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 
 import ui.TextReader;
@@ -9,22 +13,19 @@ import ui.util;
 
 public class Fileimport extends JPanel {
     String data = null;
+    String filename = File.separator + "tmp";
     TextReader textImport = new TextReader();
     JTextArea OrigrinTextArea = new JTextArea();
     JTextArea OutputTextArea = new JTextArea();
 
     public Fileimport() {
-        super(new SpringLayout());
-
+        super(new GridLayout(3,1));
+      
         JPanel fileImportContainer = new JPanel();
-        fileImportContainer.setSize(200, 100);
         fileImportContainer.add(UploadFile());
-
         JPanel TextAreaContainer = new JPanel();
         TextAreaContainer.setLayout(new GridLayout(1, 2, 15, 5));
-        TextAreaContainer.setSize(200, 400);
-        OrigrinTextArea.setSize(150, 400);
-        OutputTextArea.setSize(150, 400);
+
 
         OrigrinTextArea.setText("Upload or enter text here..."); // Start text
         OrigrinTextArea.setWrapStyleWord(true);
@@ -40,6 +41,8 @@ public class Fileimport extends JPanel {
         JPanel genaratePanel = new JPanel();
         genaratePanel.setSize(200, 100);
         genaratePanel.add(GenerateText());
+        genaratePanel.add(Download());
+
         this.add(fileImportContainer);
         this.add(TextAreaContainer);
         this.add(genaratePanel);
@@ -55,6 +58,21 @@ public class Fileimport extends JPanel {
         });
         browseFiles.setSize(100, 100);
         return browseFiles;
+    }
+
+    JButton Download(){
+        JButton downloadBtn = util.makeButton("Download Output", (e) -> {
+            String filePath = TextReader.getFilenPath();
+            data = OrigrinTextArea.getText(); // TODO: Change to output text area when ready
+           try {
+            Files.write(Paths.get(filePath), data.getBytes());
+           } catch (IOException ee) {
+                System.out.println("An error occurred.");
+                ee.printStackTrace();
+              } 
+        });
+        downloadBtn.setSize(100, 100);
+        return downloadBtn;
     }
 
     JButton GenerateText() {
