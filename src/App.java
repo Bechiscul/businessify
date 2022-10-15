@@ -1,12 +1,15 @@
-import ui.Window;
-import ui.pages.Fileimport;
+import java.util.LinkedList;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Window mainApp = new Window();
-        Fileimport importUi = new Fileimport();
+        Buzzworder buzzer = new Buzzworder();
+        Classifier classifier = new Classifier();
 
-        mainApp.makeTab("Import file", importUi);
+        String text = new String("random red text. it is a beautiful product containing cool animations");
 
+        LinkedList<String> buzzedAdjectives = buzzer.insert(classifier.classify(text));
+        System.out.println(buzzedAdjectives);
+        String buzzedText = classifier.reconstruct(buzzedAdjectives);
+        System.out.println(buzzedText);
     }
 }
