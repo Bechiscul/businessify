@@ -21,7 +21,6 @@ public class Classifier {
     this.dictionary.open();
   }
 
-
   /// Returns an list of adjectives
   public LinkedList<String> classify(String text) {
     this.text = new String(text);
