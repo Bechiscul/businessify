@@ -4,16 +4,10 @@ import java.io.*;
 import java.util.Scanner;
 
 import javax.swing.JFileChooser;
-import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import ui.pages.Fileimport;
-
 public class TextReader {
-    public File selectedFile;
-    public  String data;
-
-    public void openFolder() {
+    public static String openFolder() {
         String filename = File.separator + "tmp";
         JFileChooser fc = new JFileChooser(new File(filename));
 
@@ -25,59 +19,35 @@ public class TextReader {
         switch (fc.showOpenDialog(Window.frame)) {
             case JFileChooser.CANCEL_OPTION:
                 System.out.println("Closed dialog window. No file selected");
-                break;
+                return null;
 
             case JFileChooser.APPROVE_OPTION:
                 System.out.println("Closed dialog window. One file selected");
-                selectedFile = fc.getSelectedFile();
-                readFile();
-                Fileimport.TextOriginField();
-                
-                break;
+                File selectedFile = fc.getSelectedFile();
+                String data = readFile(selectedFile);
+                return data;
 
             default:
                 System.out.println("Closed dialog window. Error occured");
-                break;
+                return "Closed dialog window. Error occured";
         }
     }
 
-    /**
-     * InnerTextReader
-     * Classes fileinfomation together.
-     */
-    public class InnerTextReader {
-        String fileName;
-        String path;
-
-        public void InnerTextReader() {
-            selectedFile = TextReader.this.selectedFile;
-        }
-
-        public String getFileName() {
-            fileName = selectedFile.getAbsolutePath();
-            // fileName = fileName.split("/")[fileName.length() - 1];
-            return fileName;
-        }
-
-        public void getFilePath() {
-            path = selectedFile.getPath();
-
-        }
-
-    }
-
-    public void readFile() {
+    public static String readFile(File selectedFile) {
+        String data = "";
         try {
             Scanner file = new Scanner(selectedFile);
 
             while (file.hasNextLine()) {
-                data = file.nextLine();
-                System.out.println(data);
+                data += file.nextLine();
+                data += "\n";
             }
+            System.out.println(data);
             file.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not Found");
             e.printStackTrace();
         }
+        return data;
     }
 }

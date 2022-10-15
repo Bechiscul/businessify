@@ -3,8 +3,8 @@ import java.util.HashSet;
 
 // classify adjectives, nouns and verbs
 public class Classifier {
-    public static void classify(String text)  {
-        
+    public static void classify(String text) {
+
     }
 
     private static ArrayList<String> getSentences(String text) {
@@ -13,7 +13,8 @@ public class Classifier {
         int lastPeriod = 0;
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) == '.') {
-                // Because String.substring is inclusive, we must increment it to get rid of the '.'
+                // Because String.substring is inclusive, we must increment it to get rid of the
+                // '.'
                 // in the case where this sentence is not the first.
                 sentences.add(text.substring((lastPeriod != 0) ? lastPeriod + 1 : 0, i).trim());
                 lastPeriod = i;
